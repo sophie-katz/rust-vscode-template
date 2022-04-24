@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "example-bin",
+    "example-lib"
+]
+
+[profile.dev]
+opt-level = 0 # Ensure that optimization is disabled while debugging

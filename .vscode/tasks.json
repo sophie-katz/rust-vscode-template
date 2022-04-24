@@ -1,0 +1,149 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		// Default build command
+		{
+			"type": "cargo",
+			"command": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "rust: cargo build"
+		},
+		// Linting command
+		{
+			"type": "cargo",
+			"command": "clippy",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "rust: cargo clippy"
+		},
+		// Formatting command
+		{
+			"type": "cargo",
+			"command": "fmt",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "rust: cargo fmt"
+		},
+		// Generate documentation
+		{
+			"type": "cargo",
+			"command": "doc",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "rust: cargo doc"
+		},
+		// Generate code coverage report
+		{
+			"type": "cargo",
+			"command": "tarpaulin",
+			"args": [
+				"--ignore-tests",
+				"--out",
+				"Lcov",
+				"--line"
+			],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "rust: cargo tarpaulin"
+		},
+		{
+			"type": "shell",
+			"command": "genhtml",
+			"args": [
+				"lcov.info",
+				"--output-directory",
+				"coverage"
+			],
+			"label": "lcov: genhtml"
+		},
+		{
+			"label": "rust: coverage report",
+			"dependsOn": [
+				"rust: cargo tarpaulin",
+				"lcov: genhtml"
+			],
+			"dependsOrder": "sequence", // The sub-tasks cannot be run in parallel because they use the same directories for caching
+			"problemMatcher": [],
+		},
+		// Gather code coverage (on save)
+		{
+			"type": "shell", // This is a shell task not a cargo task because we need the `|| true` at the end of the command (see below)
+			"command": "cargo",
+			"args": [
+				"tarpaulin",
+				"--ignore-tests",
+				"--out",
+				"Lcov",
+				"--line",
+				// Suffix the command with `|| true` so that even if it fails (such as on a compile-time error), the file still saves
+				"||",
+				"true"
+			],
+			"options": {
+				"env": {
+					"RUSTFLAGS": "-C opt-level=0"
+				}
+			},
+			"group": "test",
+			"label": "rust: cargo tarpaulin on save",
+			"presentation": {
+				"echo": true,
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		// Generate documentation (on save)
+		{
+			"type": "shell", // This is a shell task not a cargo task because we need the `|| true` at the end of the command (see below)
+			"command": "cargo",
+			"args": [
+				"doc",
+				// Suffix the command with `|| true` so that even if it fails (such as on a compile-time error), the file still saves
+				"||",
+				"true"
+			],
+			"group": "build",
+			"label": "rust: cargo doc on save",
+			"presentation": {
+				"echo": true,
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		// Meta-task to run on file save
+		{
+			"label": "rust: on save proxy",
+			"dependsOn": [
+				"rust: cargo tarpaulin on save",
+				"rust: cargo doc on save"
+			],
+			"dependsOrder": "sequence", // The sub-tasks cannot be run in parallel because they use the same directories for caching
+			"problemMatcher": [],
+			"presentation": {
+				"echo": true,
+				"reveal": "never",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		}
+	]
+}

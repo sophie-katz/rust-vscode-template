@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/docker-existing-dockerfile
+{
+	"name": "Existing Dockerfile",
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "../Dockerfile",
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"tamasfe.even-better-toml",
+		"belfz.search-crates-io",
+		"serayuzgur.crates",
+		"streetsidesoftware.code-spell-checker",
+		"matklad.rust-analyzer",
+		"vadimcn.vscode-lldb",
+		"tabnine.tabnine-vscode",
+		"davidanson.vscode-markdownlint",
+		"hbenl.vscode-test-explorer",
+		"swellaby.vscode-rust-test-adapter",
+		"ryanluker.vscode-coverage-gutters",
+		"gruntfuggly.triggertaskonsave"
+	],
+	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "dev",
+	// Arguments to be added to the `docker run` command
+	"runArgs": [
+		"--network=host",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
+	],
+	// Configure the workspace folder to be standardized
+	"workspaceFolder": "/app",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"
+}

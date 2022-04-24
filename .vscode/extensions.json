@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "tamasfe.even-better-toml",
+        "belfz.search-crates-io",
+        "serayuzgur.crates",
+        "streetsidesoftware.code-spell-checker",
+        "matklad.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "tabnine.tabnine-vscode",
+        "davidanson.vscode-markdownlint",
+        "hbenl.vscode-test-explorer",
+        "swellaby.vscode-rust-test-adapter",
+        "ryanluker.vscode-coverage-gutters",
+        "gruntfuggly.triggertaskonsave"
+    ]
+}

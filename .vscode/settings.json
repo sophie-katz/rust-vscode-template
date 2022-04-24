@@ -1,0 +1,67 @@
+{
+    // Spellchecking
+    "cSpell.words": [
+        "Anson",
+        "belfz",
+        "Benl",
+        "Chugunov",
+        "davidanson",
+        "devcontainer",
+        "Dockerized",
+        "gruntfuggly",
+        "hbenl",
+        "Holger",
+        "LLDB",
+        "matklad",
+        "proto",
+        "ptrace",
+        "ryanluker",
+        "seccomp",
+        "Seray",
+        "serayuzgur",
+        "Swellaby",
+        "Tabnine",
+        "tamasfe",
+        "tlsv",
+        "triggertaskonsave",
+        "Uzgur",
+        "Vadim",
+        "vadimcn"
+    ],
+    // Bracket colorization
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    // Allow LLDB expression evaluation to take longer
+    "lldb.evaluationTimeout": 30,
+    // Tweaking TOML style
+    "evenBetterToml.actions.ignoreDeprecatedAssociations": "true",
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.indentTables": true,
+    "evenBetterToml.formatter.reorderKeys": true,
+    // Tweaking Rust style
+    "rust-analyzer.assist.importEnforceGranularity": true,
+    "rust-analyzer.cargo.allFeatures": true,
+    "rust-analyzer.inlayHints.closureReturnTypeHints": true,
+    // More advanced linting with Clippy
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "rust-analyzer.checkOnSave.extraArgs": [
+        "--",
+        "-W",
+        "clippy::all"
+    ],
+    "rust-analyzer.lens.enable": true,
+    // Improving unit tests
+    "testExplorer.showOnRun": true,
+    "testExplorer.useNativeTesting": true, // Use VS Code's native test sidebar (it's better)
+    "testExplorer.addToEditorContextMenu": false,
+    "testExplorer.codeLens": false, // Make sure there's no codelens conflicts
+    // Code coverage regeneration on save
+    "triggerTaskOnSave.tasks": {
+        "rust: on save proxy": [
+            "*.rs"
+        ]
+    },
+    "triggerTaskOnSave.restart": true,
+    // Formatting
+    "editor.formatOnSave": true
+}
