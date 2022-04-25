@@ -1,6 +1,6 @@
 # VS Code Extensions Used in this Template
 
-These are the extensions that were installed to the workspace to provide the above features.
+These are the extensions that were installed to the workspace:
 
 * *For code editing:*
   * **[rust-analyzer](https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer) by *matklad*** - Language support for Rust
