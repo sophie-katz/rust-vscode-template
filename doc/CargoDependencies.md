@@ -1,6 +1,6 @@
 # Cargo Dependencies Used in this Template
 
-These are the dependencies that were installed using Cargo to help provide the above features.
+These are the dependencies that were installed using Cargo:
 
 * `cargo-edit` - CLI dependency editing for Cargo
 * `cargo-workspaces` - CLI workspace management for monorepos
