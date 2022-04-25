@@ -1,6 +1,6 @@
 # Rust VS Code Template
 
-<img src="https://img.shields.io/badge/license-MIT-green" /> <img src="https://img.shields.io/badge/rust-1.60-blue" /> <img src="https://img.shields.io/badge/platform-linux-lightgrey" />
+<img src="https://img.shields.io/badge/license-MIT-green" /> <img src="https://img.shields.io/badge/rust-1.60-blue" /> <img src="https://img.shields.io/badge/platform-linux%7Cdocker-lightgrey" />
 
 Rust has a really lovely development environment, but the support for it in VS Code is very difficult to set up! There's so many great extensions that are being worked on to improve developer experience, but they are not easy to find at all. This is how I have my projects set up - it provides a decent amount of functionality and quality of life improvements that I rely on at this point.
 
