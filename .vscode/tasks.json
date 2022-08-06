@@ -1,25 +1,3 @@
-// MIT License
-//
-// Copyright (c) 2022 Sophie Katz
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-//
 {
 	"version": "2.0.0",
 	"tasks": [
@@ -36,6 +14,26 @@
 			},
 			"label": "rust: cargo build"
 		},
+		// Clean command
+		{
+			"type": "cargo",
+			"command": "clean",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"label": "rust: cargo clean"
+		},
+		// Clean command
+		{
+			"type": "shell",
+			"command": "rm",
+			"args": [
+				"-r",
+				"target"
+			],
+			"label": "rust: deep clean",
+			"problemMatcher": []
+		},
 		// Linting command
 		{
 			"type": "cargo",
@@ -43,7 +41,6 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"group": "build",
 			"label": "rust: cargo clippy"
 		},
 		// Formatting command
@@ -64,108 +61,31 @@
 			],
 			"label": "rust: cargo doc"
 		},
-		// Generate code coverage report
+		// Generate code coverage LCOV file
 		{
 			"type": "cargo",
-			"command": "tarpaulin",
+			"command": "llvm-cov",
 			"args": [
-				"--ignore-tests",
-				"--out",
-				"Lcov",
-				"--line"
+				"--lcov",
+				"--output-path",
+				"target/llvm-cov/lcov.info"
 			],
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo tarpaulin"
+			"label": "rust: cargo llvm-cov --lcov"
 		},
+		// Generate code coverage HTML report
 		{
-			"type": "shell",
-			"command": "genhtml",
+			"type": "cargo",
+			"command": "llvm-cov",
 			"args": [
-				"lcov.info",
-				"--output-directory",
-				"coverage"
+				"--html"
 			],
-			"label": "lcov: genhtml"
-		},
-		{
-			"label": "rust: coverage report",
-			"dependsOn": [
-				"rust: cargo tarpaulin",
-				"lcov: genhtml"
+			"problemMatcher": [
+				"$rustc"
 			],
-			"dependsOrder": "sequence", // The sub-tasks cannot be run in parallel because they use the same directories for caching
-			"problemMatcher": [],
-		},
-		// Gather code coverage (on save)
-		{
-			"type": "shell", // This is a shell task not a cargo task because we need the `|| true` at the end of the command (see below)
-			"command": "cargo",
-			"args": [
-				"tarpaulin",
-				"--ignore-tests",
-				"--out",
-				"Lcov",
-				"--line",
-				// Suffix the command with `|| true` so that even if it fails (such as on a compile-time error), the file still saves
-				"||",
-				"true"
-			],
-			"options": {
-				"env": {
-					"RUSTFLAGS": "-C opt-level=0"
-				}
-			},
-			"group": "test",
-			"label": "rust: cargo tarpaulin on save",
-			"presentation": {
-				"echo": true,
-				"reveal": "never",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": true
-			}
-		},
-		// Generate documentation (on save)
-		{
-			"type": "shell", // This is a shell task not a cargo task because we need the `|| true` at the end of the command (see below)
-			"command": "cargo",
-			"args": [
-				"doc",
-				// Suffix the command with `|| true` so that even if it fails (such as on a compile-time error), the file still saves
-				"||",
-				"true"
-			],
-			"group": "build",
-			"label": "rust: cargo doc on save",
-			"presentation": {
-				"echo": true,
-				"reveal": "never",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": true
-			}
-		},
-		// Meta-task to run on file save
-		{
-			"label": "rust: on save proxy",
-			"dependsOn": [
-				"rust: cargo tarpaulin on save",
-				"rust: cargo doc on save"
-			],
-			"dependsOrder": "sequence", // The sub-tasks cannot be run in parallel because they use the same directories for caching
-			"problemMatcher": [],
-			"presentation": {
-				"echo": true,
-				"reveal": "never",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": true
-			}
+			"label": "rust: cargo llvm-cov --html"
 		}
 	]
 }
