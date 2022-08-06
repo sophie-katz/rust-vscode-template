@@ -30,4 +30,5 @@ WORKDIR /app
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Install additional Rust components
-RUN rustup component add llvm-tools-preview
+RUN . "$HOME/.cargo/env" && \
+    rustup component add llvm-tools-preview
