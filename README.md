@@ -80,19 +80,19 @@ Once the [initial setup](InitialSetup.md) has been completed, projects using thi
 
 Category        | Functionality                      | Usage
 --------------- | ---------------------------------- | -----
-*Building*      | Build workspace                    | A `.vscode/tasks.json` entry is already set up. Press Ctrl+Shift+B to build all crates in the workspace.
+*Building*      | Build workspace                    | A `.vscode/tasks.json` entry is already set up. Press Ctrl+Shift+B to build all crates in the workspace.<br /><br />Or run `cargo build` from the terminal.
 *Debugging*     | Debug a binary                     | A `.vscode/launch.json` entry is already set up for `example-bin`, an example binary package. Feel free to modify it to fit your binary. You can run this from the VS Code debugger sidebar.
 |               | Debug all tests for a package      | A `.vscode/launch.json` entry is already set up for all of the unit tests in `example-lib`, an example library package. Feel free to modify it to fit your library. You can run this from the VS Code debugger sidebar.
 |               | Debug just one test                | Just above each unit test in the code, there is a code lens with an option to debug the test.
-*Testing*       | Run all tests in project           | Run the VS Code task `Rust: Test` to run all tests.
-*Linting*       | List the current file              | Linting is automatically run after every file save.
-*Formatting*    | Format the current file            | Formatting is automatically done after every file save.
-*Documentation* | Generate project documentation     | Run the VS Code task `Rust: Generate Documentation` to generate HTML documentation for the whole project.
+*Testing*       | Run all tests in project           | Run the VS Code task `Rust: Test` to run all tests.<br /><br />Or run `cargo test` from the terminal.
+*Linting*       | List the current file              | Linting is automatically run after every file save.<br /><br />Or run `cargo clippy` from the terminal.
+*Formatting*    | Format the current file            | Formatting is automatically done after every file save.<br /><br />Or run `cargo fmt` from the terminal.
+*Documentation* | Generate project documentation     | Run the VS Code task `Rust: Generate Documentation` to generate HTML documentation for the whole project.<br /><br />Or run `cargo doc` from the terminal.
 |               | View project documentation         | Run the VS Code command `Rust: Doc Viewer`.<br /><br />**NOTE:** The project's HTML documentation must be generated first (see previous).
 *Coverage*      | Generate inline test coverage data | Run the VS Code task `Rust: Generate Inline Coverage`. This will generate a `lcov.info` file which can be used to display inline test coverage.
 |               | View inline test coverage          | Run the VS Code command `Coverage Gutters: Display Coverage`.<br /><br />**NOTE:** The project's inline test coverage data must be generated first (see previous).
 |               | Generate HTML test coverage report | Run the VS Code task `Rust: Generate Coverage Report`.
-|               | View HTML test coverage report     | Run the VS Code command `Coverage Gutters: Preview Coverage Report`.<br /><br />**NOTE:** The project's HTML test coverage report must be generated first (see previous).
+|               | View HTML test coverage report     | Run the VS Code command `Coverage Gutters: Preview Coverage Report`.<br /><br />**NOTE:** The project's HTML test coverage report must be generated first (see previous).<br /><br />Or run `cargo llvm-cov --html` from the terminal.
 
 ## Template Updating Checklist
 
