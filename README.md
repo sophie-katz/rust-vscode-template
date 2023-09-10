@@ -112,6 +112,10 @@ See https://github.com/flamegraph-rs/flamegraph for more details about how to pr
 
 **NOTE:** If profiling within the dockerized development environment, make sure to enable `perf` for unprivileged users: https://github.com/flamegraph-rs/flamegraph#enabling-perf-for-use-by-unprivileged-users
 
+### GitHub Actions
+
+Follow this guide for instructions on how to set up a GitHub Action: https://eertmans.be/posts/rust-binaries-to-github-action/
+
 ## Template Updating Checklist
 
 The following items should be checked as part of updating this template to keep it up to date with the latest improvements:
