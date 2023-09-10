@@ -43,9 +43,7 @@ apt install -y \
   curl \
   gcc \
   git \
-  lcov \
-  # libssl-dev \
-  # pkg-config
+  lcov
 
 # Install needed dependencies if on:
 #  * Arch Linux
@@ -53,9 +51,7 @@ apt install -y \
 pacman -S \
   gcc \
   git \
-  lcov \
-  openssl \
-  pkg-config
+  lcov
 ```
 
 ### System dependencies on macOS
