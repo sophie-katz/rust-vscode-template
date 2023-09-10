@@ -3,8 +3,6 @@
         "tamasfe.even-better-toml",
         "serayuzgur.crates",
         "vadimcn.vscode-lldb",
-        "hbenl.vscode-test-explorer",
-        "swellaby.vscode-rust-test-adapter",
         "ryanluker.vscode-coverage-gutters",
         "jedeop.crates-completer",
         "rust-lang.rust-analyzer",

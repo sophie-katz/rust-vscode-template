@@ -1,6 +1,7 @@
 [workspace]
 
-members = ["example-bin", "example-lib"]
+members  = ["example-bin", "example-lib"]
+resolver = "2"                            # Use 2021 edition resolver
 
 [profile.dev]
 opt-level = 0 # Ensure that optimization is disabled while debugging

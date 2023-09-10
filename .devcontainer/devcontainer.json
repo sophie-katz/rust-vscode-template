@@ -7,17 +7,19 @@
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 	"dockerFile": "../Dockerfile",
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"tamasfe.even-better-toml",
-		"serayuzgur.crates",
-		"vadimcn.vscode-lldb",
-		"hbenl.vscode-test-explorer",
-		"swellaby.vscode-rust-test-adapter",
-		"ryanluker.vscode-coverage-gutters",
-		"jedeop.crates-completer",
-		"rust-lang.rust-analyzer",
-		"JScearcy.rust-doc-viewer"
-	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tamasfe.even-better-toml",
+				"serayuzgur.crates",
+				"vadimcn.vscode-lldb",
+				"ryanluker.vscode-coverage-gutters",
+				"jedeop.crates-completer",
+				"rust-lang.rust-analyzer",
+				"JScearcy.rust-doc-viewer"
+			]
+		}
+	},
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "dev",
 	// Arguments to be added to the `docker run` command

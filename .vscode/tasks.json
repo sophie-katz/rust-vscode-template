@@ -12,7 +12,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"label": "rust: cargo build"
+			"label": "Rust: Build"
 		},
 		// Clean command
 		{
@@ -21,18 +21,16 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo clean"
+			"label": "Rust: Clean"
 		},
-		// Clean command
+		// Testing command
 		{
-			"type": "shell",
-			"command": "rm",
-			"args": [
-				"-r",
-				"target"
+			"type": "cargo",
+			"command": "test",
+			"problemMatcher": [
+				"$rustc"
 			],
-			"label": "rust: deep clean",
-			"problemMatcher": []
+			"label": "Rust: Test"
 		},
 		// Linting command
 		{
@@ -41,7 +39,7 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo clippy"
+			"label": "Rust: Lint"
 		},
 		// Formatting command
 		{
@@ -50,7 +48,7 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo fmt"
+			"label": "Rust: Format"
 		},
 		// Generate documentation
 		{
@@ -59,7 +57,7 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo doc"
+			"label": "Rust: Generate Documentation"
 		},
 		// Generate code coverage LCOV file
 		{
@@ -68,12 +66,12 @@
 			"args": [
 				"--lcov",
 				"--output-path",
-				"target/llvm-cov/lcov.info"
+				"target/lcov.info"
 			],
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo llvm-cov --lcov"
+			"label": "Rust: Generate Inline Coverage"
 		},
 		// Generate code coverage HTML report
 		{
@@ -85,7 +83,7 @@
 			"problemMatcher": [
 				"$rustc"
 			],
-			"label": "rust: cargo llvm-cov --html"
+			"label": "Rust: Generate Coverage Report"
 		}
 	]
 }

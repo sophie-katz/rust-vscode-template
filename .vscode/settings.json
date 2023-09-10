@@ -6,22 +6,22 @@
     "evenBetterToml.formatter.indentTables": true,
     "evenBetterToml.formatter.reorderKeys": true,
     // More advanced linting with Clippy
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "rust-analyzer.checkOnSave.extraArgs": [
+    "rust-analyzer.checkOnSave": true,
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.check.extraArgs": [
         "--",
         "-W",
         "clippy::all"
     ],
     "rust-analyzer.lens.enable": true,
-    // Improving unit tests
-    "testExplorer.showOnRun": true,
-    "testExplorer.addToEditorContextMenu": false,
-    "testExplorer.codeLens": false, // Make sure there's no codelens conflicts
     // Formatting
     "editor.formatOnSave": true,
     // Coverage
-    "coverage-gutters.coverageReportFileName": "**/llvm-cov/html/index.html",
-    "coverage-gutters.coverageBaseDir": "/app/target/llvm-cov",
+    "coverage-gutters.coverageReportFileName": "**/target/llvm-cov/html/index.html",
+    "coverage-gutters.coverageBaseDir": "target",
+    "coverage-gutters.coverageFileNames": [
+        "lcov.info"
+    ],
     // Misc
-    "rust-analyzer.imports.granularity.enforce": true
+    "rust-analyzer.imports.granularity.enforce": true,
 }
