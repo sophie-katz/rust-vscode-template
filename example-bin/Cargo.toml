@@ -5,3 +5,4 @@ version = "0.1.0"
 
 [dependencies]
 example-lib = { path = "../example-lib" }
+rand        = "0.8.5"

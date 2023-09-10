@@ -8,7 +8,8 @@ RUN apt-get update -y && \
         curl \
         gcc \
         git \
-        lcov
+        lcov \
+        linux-perf
 
 # Add the `dev` user and switch to it
 RUN useradd -ms /bin/bash dev && \
@@ -27,4 +28,4 @@ RUN . "$HOME/.cargo/env" && \
 
 # Install additional Cargo dependencies
 RUN . "$HOME/.cargo/env" && \
-    cargo install cargo-llvm-cov
+    cargo install cargo-llvm-cov flamegraph

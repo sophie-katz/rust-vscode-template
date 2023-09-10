@@ -94,6 +94,24 @@ Category        | Functionality                      | Usage
 |               | Generate HTML test coverage report | Run the VS Code task `Rust: Generate Coverage Report`.
 |               | View HTML test coverage report     | Run the VS Code command `Coverage Gutters: Preview Coverage Report`.<br /><br />**NOTE:** The project's HTML test coverage report must be generated first (see previous).<br /><br />Or run `cargo llvm-cov --html` from the terminal.
 
+### Profiling
+
+Follow the [Cargo Flamegraph](https://github.com/flamegraph-rs/flamegraph) instructions on how to install it and the needed dependencies: https://github.com/flamegraph-rs/flamegraph#installation
+
+Run these commands to generate a flame graph profile of an executable:
+
+```shell
+# On macOS
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph --root
+
+# On Linux
+CARGO_PROFILE_RELEASE_DEBUG=true cargo flamegraph
+```
+
+See https://github.com/flamegraph-rs/flamegraph for more details about how to profile Rust code.
+
+**NOTE:** If profiling within the dockerized development environment, make sure to enable `perf` for unprivileged users: https://github.com/flamegraph-rs/flamegraph#enabling-perf-for-use-by-unprivileged-users
+
 ## Template Updating Checklist
 
 The following items should be checked as part of updating this template to keep it up to date with the latest improvements:
